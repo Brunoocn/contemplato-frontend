@@ -3,6 +3,9 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 import { SignIn } from "../../pages/SignIn";
 import { SignUp } from "../../pages/SignUp";
+import { Github } from "../../pages/Github";
+import { ToDo } from "../../pages/ToDo";
+
 
 type PrivateProps = {
   children: ReactNode;
@@ -28,8 +31,9 @@ export function RoutesComponent() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<SignIn />} />
-          {/* <Route path="/dashboard" element={<Private><Home /></Private>} /> */}
+          <Route path="/todo" element={<ToDo />} />
           <Route path="/criarconta" element={<SignUp />} />
+          <Route path="/github" element={<Github />} />
         </Routes>
       </BrowserRouter>
     </>

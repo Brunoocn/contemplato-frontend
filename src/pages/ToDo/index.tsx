@@ -1,12 +1,10 @@
 import { useState } from "react";
 import { Dashboard } from "../../components/Dashboard";
 import { Header } from "../../components/Header";
-// import { Dashboard } from "../../components/Dashboard";
-// import { NewInventoryModal } from "../../components/NewInventoryModal";
+import { NewTaskModal } from "../../components/NewTaskModal";
 
 
 export function ToDo() {
-
 
   const [isToDoModalOpen, setIsToDoModalOpen] = useState(false);
   const [isDeleteToDoModalOpen, setIsDeleteToDoModalOpen] =
@@ -30,10 +28,11 @@ export function ToDo() {
 
       <Dashboard onOpenDeleteTaskModal={handleOpenDeleteTaskModal} />
 
-      {/* // <NewInventoryModal
-      //   isOpen={isInventoryModalOpen}
-      //   onRequestClose={handleCloseInventoryModal}
-      /> */}
+      <NewTaskModal
+        isOpen={isToDoModalOpen}
+        onRequestClose={handleCloseTaskModal}
+      />
+
     </>
   );
 }

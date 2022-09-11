@@ -62,7 +62,7 @@ export const TaskProvider: React.FC = ({ children }) => {
 
   useEffect(() => {
     getTasks();
-  })
+  }, [])
 
   return (
     <TaskContext.Provider

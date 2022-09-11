@@ -2,8 +2,6 @@ import deleteImg from "../../assets/delete.svg";
 import editImg from "../../assets/edit.svg";
 import { ITask } from "../../contexts/TaskContext";
 import { useTask } from "../../hooks/useTask";
-// import { IInventory } from "../../contexts/InventoryContext";
-// import { useInventory } from "../../hooks/useInventory";
 import { Container } from "./styles";
 
 interface TableProps {
@@ -32,7 +30,6 @@ export function InfosTable({ onClickDelete }: TableProps) {
                     <button>
                       <img src={editImg} alt="Editar task" />
                     </button>
-
                     <button
                       onClick={() => {
                         onClickDelete(task);
