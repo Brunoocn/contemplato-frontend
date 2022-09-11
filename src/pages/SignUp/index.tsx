@@ -10,7 +10,7 @@ import { Container } from "./styles";
 export function SignUp() {
   const navigate = useNavigate();
   const { register } = useAuth();
-  const [name, setName] = useState("");
+  const [user, setUser] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -18,7 +18,7 @@ export function SignUp() {
   async function validateForm() {
     if (email && password && password && confirmPassword) {
       const data = {
-        name,
+        user,
         email,
         password,
         confirmPassword,
@@ -43,8 +43,8 @@ export function SignUp() {
       <Container onSubmit={handleSubmit}>
         <InputForm
           type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
+          value={user}
+          onChange={(e) => setUser(e.target.value)}
           placeholder="Nome"
         />
         <InputForm

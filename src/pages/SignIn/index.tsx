@@ -10,13 +10,13 @@ import { useAuth } from "../../hooks/useAuth";
 export function SignIn() {
   const navigate = useNavigate();
   const { signIn } = useAuth();
-  const [email, setEmail] = useState("");
+  const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
 
   async function validateForm() {
-    if (email && password) {
+    if (user && password) {
       const data = {
-        email,
+        user,
         password,
       };
       const res = await signIn(data);
@@ -38,10 +38,10 @@ export function SignIn() {
       <Title>Entre com sua conta!</Title>
       <Container onSubmit={handleSubmit}>
         <InputForm
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="Email"
+          type="text"
+          value={user}
+          onChange={(e) => setUser(e.target.value)}
+          placeholder="User"
         />
         <InputForm
           type="password"

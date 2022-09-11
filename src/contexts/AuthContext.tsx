@@ -2,24 +2,24 @@ import { createContext, ReactNode, useEffect, useState } from "react";
 import { api } from "../services/api";
 
 interface RegisterProps {
-  name: string;
+  user: string;
   email: string;
   password: string;
   confirmPassword: string;
 }
 
 interface SignInProps {
-  email: string;
+  user: string;
   password: string;
 }
 
 type SignInCredentials = {
-  email: string;
+  user: string;
   password: string;
 };
 
 type RegisterCredentials = {
-  name: string;
+  user: string;
   email: string;
   password: string;
   confirmPassword: string;
@@ -33,9 +33,7 @@ type AuthContextData = {
   signIn(credentials: SignInCredentials): Promise<boolean>;
   register(credentials: RegisterCredentials): Promise<boolean>;
   signOut: () => void;
-  getUserParams: () => { email: string };
   clearUserParams: () => void;
-  getUserEmail: () => string | null;
   isLoggedIn: boolean;
 };
 
@@ -51,22 +49,21 @@ export function AuthProvider({ children }: AuthProviderProps) {
     if (userParams) {
       setIsLoggedIn(true);
     }
-
     // se não logado verifica a pagina e se estiver em pagina não autorizada volta para o login
   }, []);
   async function register({
-    name,
+    user,
     email,
     password,
     confirmPassword,
   }: RegisterProps) {
-    let request = { name, email, password, confirmPassword };
+    let request = { user, email, password, confirmPassword };
     const res = await api.post("user/register", request);
     return res.status === 200;
   }
 
-  async function signIn({ email, password }: SignInProps) {
-    let request = { email, password };
+  async function signIn({ user, password }: SignInProps) {
+    let request = { user, password };
     const res = await api.post("token", request);
     if (res.status === 200) {
       localStorage.setItem(KEYAUTH, JSON.stringify(res.data.data));
@@ -80,25 +77,13 @@ export function AuthProvider({ children }: AuthProviderProps) {
     localStorage.removeItem(KEYAUTH);
   }
 
-  function getUserParams() {
-    const userParams = localStorage.getItem(KEYAUTH);
-    if (userParams) return JSON.parse(userParams);
-  }
-
   function clearUserParams() {
     localStorage.removeItem(KEYAUTH);
   }
 
-  function getUserEmail() {
-    const userParams = getUserParams();
-    if (userParams === null) return null;
-    return userParams.email;
-
-  }
-
   return (
     <AuthContext.Provider
-      value={{ signIn, register, signOut, getUserParams, clearUserParams, getUserEmail, isLoggedIn }}
+      value={{ signIn, register, signOut, clearUserParams, isLoggedIn }}
     >
       {children}
     </AuthContext.Provider>
