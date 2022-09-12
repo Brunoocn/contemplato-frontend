@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Dashboard } from "../../components/Dashboard";
-import { Header } from "../../components/Header";
+import { DashboardTask } from "../../components/Dashboards/DashboardTask";
+import { Header } from "../../components/Headers/HeaderTask";
 import { NewTaskModal } from "../../components/NewTaskModal";
 
 
@@ -26,7 +26,7 @@ export function ToDo() {
     <>
       <Header onOpenNewTaskModal={handleOpenTaskModal} />
 
-      <Dashboard onOpenDeleteTaskModal={handleOpenDeleteTaskModal} />
+      <DashboardTask onOpenDeleteTaskModal={handleOpenDeleteTaskModal} />
 
       <NewTaskModal
         isOpen={isToDoModalOpen}

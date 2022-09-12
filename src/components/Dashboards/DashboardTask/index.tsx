@@ -1,14 +1,14 @@
 import { useState } from 'react'
-import { ITask } from '../../contexts/TaskContext';
-import { useTask } from '../../hooks/useTask';
-import { InfosTable } from '../InfosTable';
+import { ITask } from '../../../contexts/TaskContext';
+import { useTask } from '../../../hooks/useTask';
+import { InfosTable } from '../../InfosTable/InfosTableTask';
 import { Container } from "./styles";
 
 interface DashboardProps {
   onOpenDeleteTaskModal: () => void;
 }
 
-export function Dashboard({ onOpenDeleteTaskModal }: DashboardProps) {
+export function DashboardTask({ onOpenDeleteTaskModal }: DashboardProps) {
   const [isDeleteTaskModalOpen, setIsDeleteTaskModalOpen] =
     useState(false);
   const [taskSelected, setTaskSelected] = useState<ITask | null>(

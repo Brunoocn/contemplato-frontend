@@ -1,6 +1,6 @@
 import { Container, Content } from "./styles";
-import { SignOutButton } from "../SignOutButton";
-import logoImg from '../../assets/logo_contemplato.png'
+import { SignOutButton } from "../../SignOutButton";
+import logoImg from '../../../assets/logo_contemplato.png'
 
 interface HeaderProps {
   onOpenNewTaskModal: () => void;

@@ -1,7 +1,7 @@
-import deleteImg from "../../assets/delete.svg";
-import editImg from "../../assets/edit.svg";
-import { ITask } from "../../contexts/TaskContext";
-import { useTask } from "../../hooks/useTask";
+import deleteImg from "../../../assets/delete.svg";
+import editImg from "../../../assets/edit.svg";
+import { ITask } from "../../../contexts/TaskContext";
+import { useTask } from "../../../hooks/useTask";
 import { Container } from "./styles";
 
 interface TableProps {
