@@ -3,6 +3,7 @@ import { ITask } from '../../../contexts/TaskContext';
 import { useTask } from '../../../hooks/useTask';
 import { InfosTable } from '../../InfosTable/InfosTableTask';
 import { Container } from "./styles";
+import { ConfirmTaskModal } from '../../ConfirmModal'
 
 interface DashboardProps {
   onOpenDeleteTaskModal: () => void;
@@ -28,13 +29,13 @@ export function DashboardTask({ onOpenDeleteTaskModal }: DashboardProps) {
 
   return (
     <Container>
-      {/* <DeleteInventoryModal
+      <ConfirmTaskModal
         isOpen={isDeleteTaskModalOpen}
-        onClickCancel={() => setIsDeleteInventoryModalOpen(false)}
+        onClickCancel={() => setIsDeleteTaskModalOpen(false)}
         onClickConfirm={handleModalConfirmTask}
         title="Excluir inventario?"
         message="Tem certeza que você deseja excluir este inventario?"
-      /> */}
+      />
       <InfosTable
         onOpenDeleteInventoryModal={onOpenDeleteTaskModal}
         onClickDelete={handleDeleteTask}
