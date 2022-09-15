@@ -10,18 +10,18 @@ import { useAuth } from "../../hooks/useAuth";
 export function SignIn() {
   const navigate = useNavigate();
   const { signIn } = useAuth();
-  const [user, setUser] = useState("");
+  const [name, setName] = useState("");
   const [password, setPassword] = useState("");
 
   async function validateForm() {
-    if (user && password) {
+    if (name && password) {
       const data = {
-        user,
+        name,
         password,
       };
       const res = await signIn(data);
       if (res) {
-        navigate("/dashboard");
+        navigate("/todo");
       }
     } else {
       toast.error("Está faltando algumas informações.");
@@ -39,8 +39,8 @@ export function SignIn() {
       <Container onSubmit={handleSubmit}>
         <InputForm
           type="text"
-          value={user}
-          onChange={(e) => setUser(e.target.value)}
+          value={name}
+          onChange={(e) => setName(e.target.value)}
           placeholder="User"
         />
         <InputForm
