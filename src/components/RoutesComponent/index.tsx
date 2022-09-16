@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, useEffect } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 import { SignIn } from "../../pages/SignIn";
@@ -14,10 +14,13 @@ type PrivateProps = {
 export function RoutesComponent() {
   const Private = ({ children }: PrivateProps) => {
     const { isLoggedIn } = useAuth();
+    console.log(isLoggedIn)
 
     if (!isLoggedIn) {
       return <Navigate to="/" />
     }
+
+
 
     return (
       <>
