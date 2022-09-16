@@ -14,7 +14,8 @@ type PrivateProps = {
 export function RoutesComponent() {
   const Private = ({ children }: PrivateProps) => {
     const { isLoggedIn } = useAuth();
-
+    
+    console.log(isLoggedIn)
     if (!isLoggedIn) {
       return <Navigate to="/" />
     }

@@ -12,6 +12,7 @@ interface DashboardProps {
 export function DashboardTask({ onOpenDeleteTaskModal }: DashboardProps) {
   const [isDeleteTaskModalOpen, setIsDeleteTaskModalOpen] =
     useState(false);
+
   const [taskSelected, setTaskSelected] = useState<ITask | null>(
     null
   );

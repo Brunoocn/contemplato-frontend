@@ -9,12 +9,12 @@ interface RegisterProps {
 }
 
 interface SignInProps {
-  email: string;
+  name: string;
   password: string;
 }
 
 type SignInCredentials = {
-  email: string;
+  name: string;
   password: string;
 };
 
@@ -40,16 +40,20 @@ const KEYAUTH = "user-params";
 export const AuthContext = createContext({} as AuthContextData);
 
 export function AuthProvider({ children }: AuthProviderProps) {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [userParams, setUserParams] = useState()
 
   useEffect(() => {
-    const userParams = localStorage.getItem(KEYAUTH);
+    const up = localStorage.getItem(KEYAUTH)
+    if (up) {
+      setUserParams(JSON.parse(up))
+    }
 
     if (userParams) {
       setIsLoggedIn(true);
       // se não logado verifica a pagina e se estiver em pagina não autorizada volta para o login
     }
-  })
+  }, [])
   async function register({
     name,
     email,
@@ -61,8 +65,8 @@ export function AuthProvider({ children }: AuthProviderProps) {
     return res.status === 200;
   }
 
-  async function signIn({ email, password }: SignInProps) {
-    let request = { email, password };
+  async function signIn({ name, password }: SignInProps) {
+    let request = { name, password };
     const res = await api.post("/auth/login", request);
     if (res.status === 200) {
       localStorage.setItem(KEYAUTH, JSON.stringify(res.data));

@@ -32,9 +32,6 @@ export function InfosTable({ onClickDelete }: TableProps) {
                 <tr key={index}>
                   <td>{task.task}</td>
                   <td className="icon-td">
-                    <button>
-                      <img src={editImg} alt="Editar task" />
-                    </button>
                     <button
                       onClick={() => {
                         onClickDelete(task);

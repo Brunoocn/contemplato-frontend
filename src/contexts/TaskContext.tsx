@@ -27,7 +27,7 @@ export const TaskContext = createContext({} as TaskContextData);
 
 export const TaskProvider: React.FC = ({ children }) => {
   const [tasks, setTasks] = useState<ITask[]>([]);
-  const [tasksIsLoading, setTasksIsLoading] = useState(true);
+  const [tasksIsLoading, setTasksIsLoading] = useState(false);
 
   function getTasks() {
     api.get<ITask[]>("/tasks").then((response) => {
@@ -35,10 +35,6 @@ export const TaskProvider: React.FC = ({ children }) => {
       setTasksIsLoading(false);
     })
   }
-
-  // async function updateTask(data: TaskInput) {
-  //   return
-  // }
 
   async function deleteTask(taskId: number) {
     if (taskId === undefined) {
@@ -66,7 +62,7 @@ export const TaskProvider: React.FC = ({ children }) => {
         tasksIsLoading,
         getTasks,
         deleteTask,
-        createTask
+        createTask,
       }}
     >
       {children}
