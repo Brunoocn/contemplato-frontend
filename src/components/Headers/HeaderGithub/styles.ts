@@ -12,6 +12,24 @@ export const Content = styled.div`
   align-items: center;
   justify-content: space-between;
 
+  ul {
+    display: flex;
+    gap: 40px;
+
+    li {
+      text-transform: uppercase;
+      list-style: none;
+
+      a {
+        text-decoration: none;
+        &:hover {
+          transition: filter 0.2s;
+          filter: brightness(1.1);
+        }
+      }
+    }
+  }
+
   div {
     display: flex;
     gap: 30px;

@@ -31,7 +31,7 @@ export function RoutesComponent() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<SignIn />} />
-          <Route path="/todo" element={<ToDo />} />
+          <Route path="/todo" element={<Private><ToDo /></Private>} />
           <Route path="/criarconta" element={<SignUp />} />
           <Route path="/github" element={<Github />} />
         </Routes>

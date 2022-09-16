@@ -33,8 +33,8 @@ export function DashboardTask({ onOpenDeleteTaskModal }: DashboardProps) {
         isOpen={isDeleteTaskModalOpen}
         onClickCancel={() => setIsDeleteTaskModalOpen(false)}
         onClickConfirm={handleModalConfirmTask}
-        title="Excluir inventario?"
-        message="Tem certeza que você deseja excluir este inventario?"
+        title="Excluir task?"
+        message="Tem certeza que você deseja excluir esta task?"
       />
       <InfosTable
         onOpenDeleteInventoryModal={onOpenDeleteTaskModal}
