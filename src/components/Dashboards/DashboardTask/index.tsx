@@ -37,7 +37,7 @@ export function DashboardTask({ onOpenDeleteTaskModal }: DashboardProps) {
         message="Tem certeza que você deseja excluir esta task?"
       />
       <InfosTable
-        onOpenDeleteInventoryModal={onOpenDeleteTaskModal}
+        onOpenDeleteTaskModal={onOpenDeleteTaskModal}
         onClickDelete={handleDeleteTask}
       />
     </Container>

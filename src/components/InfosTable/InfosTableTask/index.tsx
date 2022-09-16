@@ -6,7 +6,7 @@ import { useTask } from "../../../hooks/useTask";
 import { Container } from "./styles";
 
 interface TableProps {
-  onOpenDeleteInventoryModal: () => void;
+  onOpenDeleteTaskModal: () => void;
   onClickDelete: (task: ITask) => void;
 }
 
