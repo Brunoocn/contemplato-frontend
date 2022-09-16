@@ -9,12 +9,12 @@ interface RegisterProps {
 }
 
 interface SignInProps {
-  name: string;
+  email: string;
   password: string;
 }
 
 type SignInCredentials = {
-  name: string;
+  email: string;
   password: string;
 };
 
@@ -47,9 +47,9 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
     if (userParams) {
       setIsLoggedIn(true);
+      // se não logado verifica a pagina e se estiver em pagina não autorizada volta para o login
     }
-    // se não logado verifica a pagina e se estiver em pagina não autorizada volta para o login
-  }, []);
+  })
   async function register({
     name,
     email,
@@ -61,8 +61,8 @@ export function AuthProvider({ children }: AuthProviderProps) {
     return res.status === 200;
   }
 
-  async function signIn({ name, password }: SignInProps) {
-    let request = { name, password };
+  async function signIn({ email, password }: SignInProps) {
+    let request = { email, password };
     const res = await api.post("/auth/login", request);
     if (res.status === 200) {
       localStorage.setItem(KEYAUTH, JSON.stringify(res.data));

@@ -36,9 +36,9 @@ export const TaskProvider: React.FC = ({ children }) => {
     })
   }
 
-  async function updateTask(data: TaskInput) {
-    return
-  }
+  // async function updateTask(data: TaskInput) {
+  //   return
+  // }
 
   async function deleteTask(taskId: number) {
     if (taskId === undefined) {
@@ -56,7 +56,6 @@ export const TaskProvider: React.FC = ({ children }) => {
       createdAt: new Date()
     })
     getTasks();
-
   }
 
   return (
