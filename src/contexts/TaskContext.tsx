@@ -27,12 +27,12 @@ export const TaskContext = createContext({} as TaskContextData);
 
 export const TaskProvider: React.FC = ({ children }) => {
   const [tasks, setTasks] = useState<ITask[]>([]);
-  const [tasksIsLoading, setUsersIsLoading] = useState(true);
+  const [tasksIsLoading, setTasksIsLoading] = useState(true);
 
   function getTasks() {
     api.get<ITask[]>("/tasks").then((response) => {
       setTasks(response.data);
-      setUsersIsLoading(false);
+      setTasksIsLoading(false);
     })
   }
 
@@ -51,18 +51,13 @@ export const TaskProvider: React.FC = ({ children }) => {
   }
 
   async function createTask(taskInput: TaskInput) {
-    const response = await api.post('/tasks', {
+    await api.post('/tasks', {
       ...taskInput,
       createdAt: new Date()
     })
-
-    const { task } = response.data;
-    setTasks([...tasks, task]);
-  }
-
-  useEffect(() => {
     getTasks();
-  }, [])
+
+  }
 
   return (
     <TaskContext.Provider

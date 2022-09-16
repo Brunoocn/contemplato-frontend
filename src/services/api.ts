@@ -4,15 +4,19 @@ export const api = axios.create({
   baseURL: process.env.REACT_APP_API_KEY,
 });
 
-api.interceptors.request.use((config) => {
-  const jwtToken = sessionStorage.getItem("user-params");
-  if (!jwtToken) {
-    return config;
+api.interceptors.request.use((req) => {
+  const userParams = localStorage.getItem("user-params");
+  console.log(userParams);
+  if (!userParams) {
+    return req;
   } else {
-    config.headers = {
-      Authorization: `Bearer ${jwtToken}`,
+    const userParamsObj = JSON.parse(userParams);
+    console.log(userParamsObj);
+    req.headers = {
+      Authorization: `Bearer ${userParamsObj.jwtToken}`,
       ContentType: "application/json",
     };
-    return config;
+
+    return req;
   }
 });

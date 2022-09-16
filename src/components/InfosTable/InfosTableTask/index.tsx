@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import deleteImg from "../../../assets/delete.svg";
 import editImg from "../../../assets/edit.svg";
 import { ITask } from "../../../contexts/TaskContext";
@@ -10,7 +11,11 @@ interface TableProps {
 }
 
 export function InfosTable({ onClickDelete }: TableProps) {
-  const { tasks } = useTask();
+  const { getTasks, tasks } = useTask();
+
+  useEffect(() => {
+    getTasks();
+  }, [])
 
   return (
     <Container>
