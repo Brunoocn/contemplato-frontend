@@ -26,6 +26,7 @@ export function NewTaskModal({
       task,
     });
     setTask("");
+    onRequestClose();
   }
 
   return (
