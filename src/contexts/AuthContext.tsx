@@ -40,7 +40,7 @@ const KEYAUTH = "user-params";
 export const AuthContext = createContext({} as AuthContextData);
 
 export function AuthProvider({ children }: AuthProviderProps) {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userParams, setUserParams] = useState()
 
   useEffect(() => {
