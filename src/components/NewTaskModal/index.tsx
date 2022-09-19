@@ -6,6 +6,7 @@ import { useTask } from "../../hooks/useTask";
 import closeImg from "../../assets/close.svg";
 
 import { Container } from "./styles";
+import toast from "react-hot-toast";
 interface NewTaskModalProps {
   isOpen: boolean;
   onRequestClose: () => void;
@@ -15,18 +16,21 @@ export function NewTaskModal({
   isOpen,
   onRequestClose,
 }: NewTaskModalProps) {
+
   const { createTask } = useTask()
-
   const [task, setTask] = useState("");
-
 
   async function handleCreateNewTask(event: FormEvent) {
     event.preventDefault();
-    await createTask({
-      task,
-    });
-    setTask("");
-    onRequestClose();
+    if (task) {
+      const data = { task }
+      await createTask(data);
+      setTask("");
+      onRequestClose();
+    }
+    else {
+      toast.error('Preencha sua task')
+    }
   }
 
   return (

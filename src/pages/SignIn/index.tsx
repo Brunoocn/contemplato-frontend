@@ -24,7 +24,7 @@ export function SignIn() {
         navigate("/todo");
       }
     } else {
-      toast.error("Está faltando algumas informações.");
+      toast.error("Está faltando algumas informações ou as informações estão incorretas.");
     }
   }
 

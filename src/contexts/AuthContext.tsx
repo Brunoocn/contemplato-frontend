@@ -62,7 +62,14 @@ export function AuthProvider({ children }: AuthProviderProps) {
   }: RegisterProps) {
     let request = { name, email, password, confirmPassword };
     const res = await api.post("/auth/register", request);
-    return res.status === 200;
+    if (res.status === 200) {
+      res.status = 200
+      return true
+    }
+    else {
+      res.status = 400
+      return false
+    }
   }
 
   async function signIn({ name, password }: SignInProps) {
